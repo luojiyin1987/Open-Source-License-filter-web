@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  license-filter:
+    specifier: ^0.2.2
+    version: 0.2.2
   next:
     specifier: 13.2.4
     version: 13.2.4(react-dom@18.2.0)(react@18.2.0)
@@ -1583,6 +1586,12 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /license-filter@0.2.2:
+    resolution: {integrity: sha512-aLIiEAksDg0KsnwzS2ZUt0xF026dN58Lg6eJg5PFvDInT4aOZlNPuUNNt41s7g5DXLaoaxumFjlw2FYCPQuf6Q==}
+    dependencies:
+      '@swc/helpers': 0.4.14
+    dev: false
 
   /locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
