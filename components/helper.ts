@@ -1,5 +1,13 @@
 import { FeatureAttitude, InfectionRange } from "license-filter";
-const optionValue = {
+
+type OptionValue = {
+  [property: string]: { value:number, text:string }[]
+}
+
+type LicenseTips = {
+  [property: string]: { text: string }[]
+};
+const optionValue:OptionValue = {
   popularity: [
     { value: FeatureAttitude.Undefined, text: "两者皆可" },
     {
@@ -86,7 +94,9 @@ const optionValue = {
   ],
 };
 
-const licenseTips = {
+
+
+const licenseTips:LicenseTips = {
   popularity: [
     {
       text: "您想将结果限定为开放源代码促进会（OSI）所描述的“流行并广泛使用，或拥有广泛社区群”的许可协议吗？",

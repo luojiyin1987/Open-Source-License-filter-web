@@ -7,6 +7,7 @@ import {
   FeatureAttitude,
   InfectionRange,
   filterLicenses,
+  License,
 } from "license-filter";
 import styles from "../styles/Home.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,22 +24,15 @@ import {
 
 import { optionValue, licenseTips } from "../components/helper";
 
+interface List {
+  license: any;
+  score: number;
+}
+
 const Home: NextPage = () => {
   const [stepIndex, setStepIndex] = useState(0);
   const [filterOption, setFilterOption] = useState({});
-  const [lists, setLists] = useState([]);
-  // const list = filterLicenses({
-  //   popularity: FeatureAttitude.Negative,
-  //   reuseCondition: FeatureAttitude.Positive,
-  //   infectionIntensity: FeatureAttitude.Positive,
-  //   infectionRange: InfectionRange.Module,
-  //   jurisdiction: FeatureAttitude.Undefined,
-  //   patentStatement: FeatureAttitude.Positive,
-  //   patentRetaliation: FeatureAttitude.Positive,
-  //   enhancedAttribution: FeatureAttitude.Positive,
-  //   privacyLoophole: FeatureAttitude.Negative,
-  //   marketingEndorsement: FeatureAttitude.Negative,
-  // });
+  const [lists, setLists] = useState<List[]>([]);
 
   const chooseSteps: string[] = [
     "popularity",
@@ -62,9 +56,10 @@ const Home: NextPage = () => {
   // console.log("list");
   // console.log(list); // filtered licenses
 
-  const handleSelect = (e: string) => {
+  const handleSelect = (e: string | null) => {
     console.log("handleSelect choice,e", stepIndex, e);
-    const choice = ["0", "1", "-1"].includes(e) ? Number(e) : e;
+
+    const choice = e ? (["0", "1", "-1"].includes(e) ? Number(e) : e) : 0;
     console.log(chooseSteps[stepIndex]);
     const key = chooseSteps[stepIndex];
     const newObject = { ...filterOption, [key]: choice };
@@ -72,7 +67,9 @@ const Home: NextPage = () => {
     console.log(filterOption);
 
     const tempLists = filterLicenses(newObject);
-    setStepIndex(stepIndex < chooseSteps.length - 1 ? stepIndex + 1 : stepIndex);
+    setStepIndex(
+      stepIndex < chooseSteps.length - 1 ? stepIndex + 1 : stepIndex
+    );
     setFilterOption({ ...newObject });
     setLists(tempLists);
     console.log("tempLists", tempLists);
@@ -95,6 +92,7 @@ const Home: NextPage = () => {
 
       <div>
         {licenseTips[chooseSteps[stepIndex]].map((tip) => (
+          // eslint-disable-next-line react/jsx-key
           <p>{tip.text}</p>
         ))}
       </div>
@@ -118,6 +116,7 @@ const Home: NextPage = () => {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {optionValue[chooseSteps[stepIndex]].map((info) => (
+              // eslint-disable-next-line react/jsx-key
               <Dropdown.Item eventKey={info.value}>{info.text}</Dropdown.Item>
             ))}
           </Dropdown.Menu>
@@ -125,6 +124,7 @@ const Home: NextPage = () => {
       </div>
       <div>
         {lists.map((list, index) => (
+          // eslint-disable-next-line react/jsx-key
           <p>
             {list.license.name} score: {list.score * 10}
           </p>
