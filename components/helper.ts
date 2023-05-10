@@ -88,6 +88,7 @@ const optionValue:OptionValue = {
   ],
 
   infectionRange: [
+    {value: 0, text:"不进行要求"},
     { value: InfectionRange.Library, text: "传染范围到库" },
     { value: InfectionRange.File, text: "传染范围到文件" },
     { value: InfectionRange.Module, text: "传染范围到模块" },
@@ -99,7 +100,7 @@ const optionValue:OptionValue = {
 const licenseTips:LicenseTips = {
   popularity: [
     {
-      text: "您想将结果限定为开放源代码促进会（OSI）所描述的“流行并广泛使用，或拥有广泛社区群”的许可协议吗？",
+      text: "您想将结果限定为开放源代码促进会 (OSI) 所描述的“流行并广泛使用，或拥有广泛社区群”的许可协议吗？",
     },
     {
       text: "这将以牺牲一些更冷僻但或许有用的特征为代价来确保该许可协议成为“主流”协议。",
