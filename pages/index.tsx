@@ -31,11 +31,10 @@ interface List {
 
 const Home: NextPage = () => {
   const [stepIndex, setStepIndex] = useState(0);
-  const [keyIndex,setKeyIndex] = useState(0);
+  const [keyIndex, setKeyIndex] = useState(0);
   const [filterOption, setFilterOption] = useState({});
   const [disableDropdown, setDisableDropdown] = useState(false);
   const [lists, setLists] = useState<List[]>([]);
-
 
   const chooseSteps: string[] = [
     "popularity",
@@ -60,19 +59,18 @@ const Home: NextPage = () => {
   // console.log(list); // filtered licenses
 
   useEffect(() => {
-    if (stepIndex === chooseSteps.length ) {
-      console.log('Selected option:', stepIndex);
+    if (stepIndex === chooseSteps.length) {
+      console.log("Selected option:", stepIndex);
       setDisableDropdown(true);
     }
   }, [chooseSteps.length, stepIndex]);
 
-
   const handleSelect = (e: string | null) => {
-    console.log("handleSelect choice,e", stepIndex, e);
+    console.log("handleSelect choice,e", keyIndex, e);
 
     const choice = e ? (["0", "1", "-1"].includes(e) ? Number(e) : e) : 0;
-    console.log(chooseSteps[stepIndex]);
-    const key = chooseSteps[stepIndex];
+    console.log(chooseSteps[keyIndex]);
+    const key = chooseSteps[keyIndex];
     const newObject = { ...filterOption, [key]: choice };
 
     console.log(filterOption);
@@ -83,24 +81,16 @@ const Home: NextPage = () => {
     //   setDisableDropdown(true)
     // }
 
-   
     setFilterOption({ ...newObject });
-    
-    
+
     setLists(tempLists);
 
-    setStepIndex(
-      stepIndex <= chooseSteps.length -1 ? stepIndex + 1 : stepIndex
-  );
+    setStepIndex(stepIndex < chooseSteps.length ? stepIndex + 1 : stepIndex);
 
-   setKeyIndex(
-     keyIndex < chooseSteps.length -1 ? keyIndex +1: keyIndex
-   );
+    setKeyIndex(keyIndex < chooseSteps.length - 1 ? keyIndex + 1 : keyIndex);
     console.log("tempLists", tempLists);
     console.log("list", lists);
   };
-
-
 
   return (
     <div className={styles.container}>
@@ -137,8 +127,9 @@ const Home: NextPage = () => {
       </div>
       <br />
       <div>
-        <Dropdown onSelect={handleSelect} >
-          <Dropdown.Toggle  disabled={disableDropdown}
+        <Dropdown onSelect={handleSelect}>
+          <Dropdown.Toggle
+            disabled={disableDropdown}
             id="dropdown-basic-button"
             title={choose || "请选择"}
           >
