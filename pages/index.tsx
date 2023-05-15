@@ -20,6 +20,7 @@ import {
   Dropdown,
   DropdownButton,
   Button,
+  Accordion,
 } from "react-bootstrap";
 
 import { optionValue, licenseTips } from "../components/helper";
@@ -143,14 +144,29 @@ const Home: NextPage = () => {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      <div>
+      {/* <div>
         {lists.map((list, index) => (
           // eslint-disable-next-line react/jsx-key
           <p>
             {list.license.name} 评分: {list.score * 10}
           </p>
         ))}
+      </div> */}
+      
+      <br/>
+      <div>
+      <Accordion defaultActiveKey="0">
+          {lists.map((list, index) =>(
+            // eslint-disable-next-line react/jsx-key
+            <Accordion.Item eventKey={(index+1).toString()}>
+               <Accordion.Header> {list.license.name} 评分: {list.score * 10}</Accordion.Header>
+               <Accordion.Body>{ JSON.stringify(list.license.feature  )}</Accordion.Body>
+            </Accordion.Item>
+          ))}
+      
+      </Accordion>
       </div>
+
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
