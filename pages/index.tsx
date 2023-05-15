@@ -26,7 +26,7 @@ import {
 import { optionValue, licenseTips } from "../components/helper";
 
 interface List {
-  license: License ;
+  license: License;
   score: number;
 }
 
@@ -185,21 +185,84 @@ const Home: NextPage = () => {
   );
 };
 
-function renderInfo(info:License ) {
-  const  key ={ [InfectionRange.Library]: "Library", [InfectionRange.File]: "File", [InfectionRange.Module]:"Module"}
+function renderInfo(info: License) {
+  const key = {
+    [InfectionRange.Library]: "Library",
+    [InfectionRange.File]: "File",
+    [InfectionRange.Module]: "Module",
+  };
   return (
     <div>
-      <p>{`流行程度: ${(info.feature.popularity ? "Yes" :info.feature.popularity === FeatureAttitude.Undefined? "不明确":"No" )}` }</p>
-      <p>{`复用条件: ${(info.feature.reuseCondition ? "Yes" :info.feature.reuseCondition === FeatureAttitude.Undefined? "不明确":"No"  )}` }</p>
-      <p>{`传染强度: ${(info.feature.infectionIntensity ? "Yes" :info.feature.infectionIntensity ===  FeatureAttitude.Undefined? "不明确" :"No"  )}`}</p>
-      <p>{`传染范围: ${( info.feature.infectionRange in key ? key[info.feature.infectionRange] : "不明确" )}`}</p>
-      <p>{`法律管辖: ${(info.feature.jurisdiction ? "Yes" :info.feature.jurisdiction ===FeatureAttitude.Undefined? "不明确" :"No"   )}` }</p>
-      <p>{`专利声明: ${(info.feature.patentStatement ? "Yes" :info.feature.patentStatement === FeatureAttitude.Undefined? "不明确" :"No"  )}`}</p>
-      <p>{`专利报复: ${(info.feature.patentRetaliation ? "Yes" :info.feature.patentRetaliation === FeatureAttitude.Undefined? "不明确" :"No"  )}`}</p>
-      <p>{`增强署名: ${(info.feature.enhancedAttribution ? "Yes" :info.feature.enhancedAttribution === FeatureAttitude.Undefined? "不明确" :"No"  )}`}</p>
-      <p>{`隐私漏洞: ${(info.feature.privacyLoophole ? "Yes" :info.feature.privacyLoophole === FeatureAttitude.Undefined? "不明确" :"No"  )}`}</p>
-      <p>{`营销背书：${(info.feature.marketingEndorsement ? "Yes" :info.feature.marketingEndorsement === FeatureAttitude.Undefined? "不明确" :"No"  )}`}</p>
-     <a href={info.link}>协议详情</a>
+      <p>{`流行程度: ${
+        info.feature.popularity
+          ? "Yes"
+          : info.feature.popularity === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      <p>{`复用条件: ${
+        info.feature.reuseCondition
+          ? "Yes"
+          : info.feature.reuseCondition === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      <p>{`传染强度: ${
+        info.feature.infectionIntensity
+          ? "Yes"
+          : info.feature.infectionIntensity === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      {info.feature.infectionRange} &&
+      <p>{`传染范围: ${
+        info.feature.infectionRange in key
+          ? key[info.feature.infectionRange]
+          : "不明确"
+      }`}</p>
+      <p>{`法律管辖: ${
+        info.feature.jurisdiction
+          ? "Yes"
+          : info.feature.jurisdiction === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      <p>{`专利声明: ${
+        info.feature.patentStatement
+          ? "Yes"
+          : info.feature.patentStatement === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      <p>{`专利报复: ${
+        info.feature.patentRetaliation
+          ? "Yes"
+          : info.feature.patentRetaliation === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      <p>{`增强署名: ${
+        info.feature.enhancedAttribution
+          ? "Yes"
+          : info.feature.enhancedAttribution === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      <p>{`隐私漏洞: ${
+        info.feature.privacyLoophole
+          ? "Yes"
+          : info.feature.privacyLoophole === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      <p>{`营销背书：${
+        info.feature.marketingEndorsement
+          ? "Yes"
+          : info.feature.marketingEndorsement === FeatureAttitude.Undefined
+          ? "不明确"
+          : "No"
+      }`}</p>
+      <a href={info.link}>协议详情</a>
     </div>
   );
 }
