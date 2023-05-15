@@ -214,12 +214,13 @@ function renderInfo(info: License) {
           ? "不明确"
           : "No"
       }`}</p>
-      {info.feature.infectionRange} &&
-      <p>{`传染范围: ${
-        info.feature.infectionRange in key
-          ? key[info.feature.infectionRange]
-          : "不明确"
-      }`}</p>
+      {info.feature.infectionRange && (
+        <p>{`传染范围: ${
+          info.feature.infectionRange in key
+            ? key[info.feature.infectionRange]
+            : "不明确"
+        }`}</p>
+      )}
       <p>{`法律管辖: ${
         info.feature.jurisdiction
           ? "Yes"
