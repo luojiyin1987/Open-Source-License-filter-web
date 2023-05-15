@@ -152,19 +152,21 @@ const Home: NextPage = () => {
           </p>
         ))}
       </div> */}
-      
-      <br/>
+
+      <br />
       <div>
-      <Accordion defaultActiveKey="0">
-          {lists.map((list, index) =>(
+        <Accordion defaultActiveKey="0">
+          {lists.map((list, index) => (
             // eslint-disable-next-line react/jsx-key
-            <Accordion.Item eventKey={(index+1).toString()}>
-               <Accordion.Header> {list.license.name} 评分: {list.score * 10}</Accordion.Header>
-               <Accordion.Body>{ JSON.stringify(list.license.feature  )}</Accordion.Body>
+            <Accordion.Item eventKey={(index + 1).toString()}>
+              <Accordion.Header>
+                {" "}
+                {list.license.name} 评分: {list.score * 10}
+              </Accordion.Header>
+              <Accordion.Body>{renderInfo(list.license)}</Accordion.Body>
             </Accordion.Item>
           ))}
-      
-      </Accordion>
+        </Accordion>
       </div>
 
       <footer className={styles.footer}>
@@ -182,5 +184,24 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+function renderInfo(info: any) {
+  const  key ={1: "Library", 2: "File", 3:"Module"}
+  return (
+    <div>
+      <p>{`流行程度: ${(info.feature.popularity ? "Yes" :info.feature.popularity === -1? "No":"不明确"  )}` }</p>
+      <p>{`复用条件: ${(info.feature.reuseCondition ? "Yes" :info.feature.reuseCondition === -1? "No":"不明确"  )}` }</p>
+      <p>{`传染强度: ${(info.feature.infectionIntensity ? "Yes" :info.feature.infectionIntensity === -1? "No":"不明确"  )}`}</p>
+      <p>{`传染范围: ${( key[info.feature.infectionRange]? key[info.feature.infectionRange] : "不明确" )}`}</p>
+      <p>{`法律管辖: ${(info.feature.jurisdiction ? "Yes" :info.feature.jurisdiction === -1? "No":"不明确"  )}` }</p>
+      <p>{`专利声明: ${(info.feature.patentStatement ? "Yes" :info.feature.patentStatement === -1? "No":"不明确"  )}`}</p>
+      <p>{`专利报复: ${(info.feature.patentRetaliation ? "Yes" :info.feature.patentRetaliation === -1? "No":"不明确"  )}`}</p>
+      <p>{`增强署名: ${(info.feature.enhancedAttribution ? "Yes" :info.feature.enhancedAttribution === -1? "No":"不明确"  )}`}</p>
+      <p>{`隐私漏洞: ${(info.feature.privacyLoophole ? "Yes" :info.feature.privacyLoophole === -1? "No":"不明确"  )}`}</p>
+      <p>{`营销背书：${(info.feature.marketingEndorsement ? "Yes" :info.feature.marketingEndorsement === -1? "No":"不明确"  )}`}</p>
+     <a href={info.link}>协议详情</a>
+    </div>
+  );
+}
 
 export default Home;
