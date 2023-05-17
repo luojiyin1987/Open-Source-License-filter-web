@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   license-filter:
-    specifier: ^0.2.2
-    version: 0.2.2
+    specifier: ^0.2.3
+    version: 0.2.3
   next:
     specifier: 13.2.4
     version: 13.2.4(react-dom@18.2.0)(react@18.2.0)
@@ -1597,8 +1597,8 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /license-filter@0.2.2:
-    resolution: {integrity: sha512-aLIiEAksDg0KsnwzS2ZUt0xF026dN58Lg6eJg5PFvDInT4aOZlNPuUNNt41s7g5DXLaoaxumFjlw2FYCPQuf6Q==}
+  /license-filter@0.2.3:
+    resolution: {integrity: sha512-kfG3+ghGA7tAfMm7NZWfknLqEeyyEhDmqtGCLYjciO2q4Xzu42nRdeA7kOgpFOaeZLpUAFhS2zs+21W9GegW1w==}
     dependencies:
       '@swc/helpers': 0.4.14
     dev: false
