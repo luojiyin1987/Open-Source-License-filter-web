@@ -194,25 +194,25 @@ function renderInfo(info: License) {
   return (
     <div>
       <p>{`流行程度: ${
-        info.feature.popularity
+        info.feature.popularity === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.popularity === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.popularity === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       <p>{`复用条件: ${
-        info.feature.reuseCondition
+        info.feature.reuseCondition === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.reuseCondition === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.reuseCondition === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       <p>{`传染强度: ${
-        info.feature.infectionIntensity
+        info.feature.infectionIntensity === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.infectionIntensity === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.infectionIntensity === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       {info.feature.infectionRange && (
         <p>{`传染范围: ${
@@ -222,46 +222,46 @@ function renderInfo(info: License) {
         }`}</p>
       )}
       <p>{`法律管辖: ${
-        info.feature.jurisdiction
+        info.feature.jurisdiction === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.jurisdiction === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.jurisdiction === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       <p>{`专利声明: ${
-        info.feature.patentStatement
+        info.feature.patentStatement === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.patentStatement === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.patentStatement === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       <p>{`专利报复: ${
-        info.feature.patentRetaliation
+        info.feature.patentRetaliation === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.patentRetaliation === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.patentRetaliation === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       <p>{`增强署名: ${
-        info.feature.enhancedAttribution
+        info.feature.enhancedAttribution === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.enhancedAttribution === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.enhancedAttribution === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       <p>{`隐私漏洞: ${
-        info.feature.privacyLoophole
+        info.feature.privacyLoophole === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.privacyLoophole === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.privacyLoophole === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       <p>{`营销背书：${
-        info.feature.marketingEndorsement
+        info.feature.marketingEndorsement === FeatureAttitude.Positive
           ? "Yes"
-          : info.feature.marketingEndorsement === FeatureAttitude.Undefined
-          ? "不明确"
-          : "No"
+          : info.feature.marketingEndorsement === FeatureAttitude.Negative
+          ? "No"
+          : "不明确"
       }`}</p>
       <a href={info.link}>协议详情</a>
     </div>
